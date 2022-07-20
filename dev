@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 if [ $1 == "" ]; then
     echo $"Usage: $0 {backend|down|run|docker-restart}"
     exit 0
