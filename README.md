@@ -6,14 +6,26 @@ Clone to a new repo, and start work on that repo
 
 ## Developing in container
 
-### start dev-server
+### requirements:
+
+* Linux/MacOS/Windows installed
+* Docker installed
+
+### Start the development container while using MacOS / Linux
 
 1. start the backend container: `./dev backend`
+
+### Start the development container in Windows
+
+1. run `.\dev.bat backend` to start and enter the backend container
+
+### Start dev-server in development container
+
 1. run `./dev initdir` to create directories and log file
 1. install dependencies: `poetry install` (Only first time or after git-pull)
 1. start django server: `./dev run`
 
-to create a super user:
+create a super user:
 
 `poetry run python3 manage.py createsuperuser`
 
@@ -32,10 +44,14 @@ to create a super user:
 * Create i18n .po file: `./dev mkmsg`
 * Complie i18n .po file to .mo file: `./dev comsg`
 
-### drop all containers
+### drop off all containers
 
-`./dev down`
+* for Windows: `.\dev.bat down` 
+* for MacOS and Linux`./dev down`
 
 ## about poetry:
 
+* install dependency: `poetry add pendulum`
+* run script: `poetry run python3 xxxxx.py`
+* remove a dependency: `poetry remove pendulum`
 * delete cache for a source `rm -rf ~/.cache/pypoetry/cache/repositories/tengxun/`
