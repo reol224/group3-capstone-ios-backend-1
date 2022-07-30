@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # replace key in every new project
-SECRET_KEY = '--------------------------------------------------'
+SECRET_KEY = 'akjfieaogaklsdfjieoagi23o4u1890uoajfahigolJKHGDSW2'
 SECURITY_PASSWORD_SALT = 'fancy_salt_for_our_project_axbc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework.authtoken',
     'drf_yasg',
+    'backend.account',
 ]
 
 MIDDLEWARE = [
@@ -98,7 +99,7 @@ SERIALIZATION_MODULES = {
 }
 
 AUTHENTICATION_BACKENDS = (
-    # 'backend.account.utils.account_backend.EmailOrUsernameBackend',
+    'backend.account.utils.account_backend.EmailOrUsernameBackend',
 )
 
 
