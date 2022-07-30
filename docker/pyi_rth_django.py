@@ -58,17 +58,6 @@ def _get_commands():
          'test': 'django.core',
          'testserver': 'django.core',
          'validate': 'django.core',
-         'import-gps': 'backend.vehicle',
-         'render-gps-line': 'backend.vehicle',
-         'render-gps-line-weight': 'backend.vehicle',
-         'update-gps': 'backend.vehicle',
-         'update-area-vehicle': 'backend.vehicle',
-         'render-gps-aggregation': 'backend.vehicle',
-         'modify_vehicle': 'backend.vehicle',
-         'update-dangerous-line': 'backend.vehicle',
-         'update-dangerous-area': 'backend.vehicle',
-         'weather-grid': 'backend.weather',
-         'update-region-level': 'backend.infobase',
     }
     return commands
 

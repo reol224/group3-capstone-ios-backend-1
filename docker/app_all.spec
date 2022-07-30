@@ -15,12 +15,8 @@ added_files = [
   (os.path.join(local_lib, 'django_filters'), 'django_filters'),
   (os.path.join(local_lib, 'itsdangerous'), 'itsdangerous'),
   (os.path.join(local_lib, 'shortuuid'), 'shortuuid'),
-  (os.path.join(local_lib, 'shapely'), 'shapely'),
-  (os.path.join(local_lib, 'numpy'), 'numpy'),
-  (os.path.join(local_lib, 'pandas'), 'pandas'),
   (os.path.join(local_lib, 'dbutils'), 'dbutils'),
   (os.path.join(local_lib, 'requests'), 'requests'),
-  (os.path.join(local_lib, 'coreschema'), 'coreschema'),
   (os.path.join(local_lib, 'drf_yasg'), 'drf_yasg'),
 
   ('app', 'app'),
@@ -40,12 +36,8 @@ hide_imports = [
   "itsdangerous",
   "GDAL",
   "shortuuid",
-  "shapely",
-  "numpy",
-  "pandas",
   "dbutils",
   "requests",
-  "coreschema",
   "drf_yasg",
 ]
 
