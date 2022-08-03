@@ -1,0 +1,18 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ios-capstone-ssl
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: (Host(`capstone.freeyeti.net`)
+      priority: 9
+      services:
+        - name: ios-capstone-backend
+          port: 8000
+  tls:
+    secretName: freeyeti-issuer-key

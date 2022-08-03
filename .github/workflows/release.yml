@@ -107,14 +107,16 @@ jobs:
           IMAGE_TAG: ${{ steps.vars.outputs.tag }}
           WWW_DATA_PATH: ${{ secrets.WWW_DATA_PATH }}
           TEST_CODE_PATH: ${{ secrets.TEST_CODE_PATH }}
+          PULL_SECRET: ${{ secrets.PULL_SECRET }}
         run: |
           sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/deployment.backend.yaml
           sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/deployment.backend.yaml
           sed -i "s@__WWW_DATA_PATH__@$WWW_DATA_PATH@g" k8s/deployment.backend.yaml
+          sed -i "s@__PULL_SECRET__@$PULL_SECRET@g" k8s/deployment.backend.yaml
 
           sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/job.db-migrate.yaml
           sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/job.db-migrate.yaml
-          
+
           sed -i "s@__CODE_PATH__@$TEST_CODE_PATH@g" k8s/job.test.backend.yaml
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
