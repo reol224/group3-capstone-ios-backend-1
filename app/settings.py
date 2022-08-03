@@ -26,7 +26,12 @@ SECRET_KEY = 'akjfieaogaklsdfjieoagi23o4u1890uoajfahigolJKHGDSW2'
 SECURITY_PASSWORD_SALT = 'fancy_salt_for_our_project_axbc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False
+
+
+# For test
+DEBUG = True
+LOGGING = {}
 
 ALLOWED_HOSTS = ["*"]
 # Application definition
@@ -173,33 +178,33 @@ ERROR_ACCOUNT_USERNAME = ['username', 'user', 'name', 'password', 'passwd', 'nul
                           'drop', 'delete', 'update', 'create', 'alert', 'admin', 'root']
 
 # Logging
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'INFO',
-            'formatter': 'verbose',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': os.environ.get('DJANGO_LOG_FILE'),
-            'when': 'midnight',
-            'interval': 1
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['file'],
-            'level': 'INFO',
-            'propagate': True,
-        },
-    },
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'verbose': {
+#             'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{',
+#         },
+#     },
+#     'handlers': {
+#         'file': {
+#             'level': 'INFO',
+#             'formatter': 'verbose',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': os.environ.get('DJANGO_LOG_FILE'),
+#             'when': 'midnight',
+#             'interval': 1
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file'],
+#             'level': 'INFO',
+#             'propagate': True,
+#         },
+#     },
+# }
 
 # Django Rest Framework
 REST_FRAMEWORK = {
