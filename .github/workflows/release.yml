@@ -82,44 +82,46 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   ## Generate deployment files.
-  # generate-artifacts:
-  #   # Ensure django image is built before run testing.
-  #   needs: build
+  generate-artifacts:
+    # Ensure django image is built before run testing.
+    needs: build
 
-  #   runs-on: [ubuntu-latest]
+    runs-on: [ubuntu-latest]
 
-  #   steps:
-  #     - name: Set image version
-  #       id: vars
-  #       run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
+    steps:
+      - name: Set image version
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
       
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         ref: ${{ steps.vars.outputs.tag }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ steps.vars.outputs.tag }}
           
-  #     - name: Check image version
-  #       env:
-  #         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
-  #       run: |
-  #         echo $IMAGE_TAG
-  #     - name: Generate deployment files
-  #       env:
-  #         IMAGE_TAG: ${{ steps.vars.outputs.tag }}
-  #         WWW_DATA_PATH: ${{ secrets.WWW_DATA_PATH }}
-  #         TEST_CODE_PATH: ${{ secrets.TEST_CODE_PATH }}
-  #       run: |
-  #         sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/deployment.backend.yaml
-  #         sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/job.db-migrate.yaml
-  #         sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/job.db-migrate.yaml
-  #         sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/deployment.backend.yaml
-  #         sed -i "s@__WWW_DATA_PATH__@$WWW_DATA_PATH@g" k8s/deployment.backend.yaml
-  #         sed -i "s@__CODE_PATH__@$TEST_CODE_PATH@g" k8s/job.test.backend.yaml
-  #     - name: Upload artifacts
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: ${{ github.event.repository.name }}-deployment
-  #         path: |
-  #           k8s/deployment.backend.yaml
-  #           k8s/job.db-migrate.yaml
-  #           k8s/job.test.backend.yaml
-  #           k8s/service.backend.yaml
+      - name: Check image version
+        env:
+          IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $IMAGE_TAG
+      - name: Generate deployment files
+        env:
+          IMAGE_TAG: ${{ steps.vars.outputs.tag }}
+          WWW_DATA_PATH: ${{ secrets.WWW_DATA_PATH }}
+          TEST_CODE_PATH: ${{ secrets.TEST_CODE_PATH }}
+        run: |
+          sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/deployment.backend.yaml
+          sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/deployment.backend.yaml
+          sed -i "s@__WWW_DATA_PATH__@$WWW_DATA_PATH@g" k8s/deployment.backend.yaml
+
+          sed -i "s@__IMAGE_BACKEND__@$BACKEND_IMAGE@g" k8s/job.db-migrate.yaml
+          sed -i "s@__IMAGE_TAG__@$IMAGE_TAG@g" k8s/job.db-migrate.yaml
+          
+          sed -i "s@__CODE_PATH__@$TEST_CODE_PATH@g" k8s/job.test.backend.yaml
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ github.event.repository.name }}-deployment
+          path: |
+            k8s/deployment.backend.yaml
+            k8s/job.db-migrate.yaml
+            k8s/job.test.backend.yaml
+            k8s/service.backend.yaml

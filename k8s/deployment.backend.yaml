@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ios-capstone-backend
+  labels:
+    app: ios-capstone-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ios-capstone-backend
+  template:
+    metadata:
+      labels:
+        app: ios-capstone-backend
+    spec:
+      containers:
+        - name: ios-capstone-backend
+          image: __IMAGE_BACKEND__:__IMAGE_TAG__
+          command: ["./app"]
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: ios-capstone-env-config
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: app.settings
+          resources:
+            limits:
+              memory: 2048Mi
+              cpu: "0.5"
+          volumeMounts:
+            - name: www-data
+              mountPath: /www_data
+      volumes:
+        - name: www-data
+          hostPath:
+            path: __WWW_DATA_PATH__
