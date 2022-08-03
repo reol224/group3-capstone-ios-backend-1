@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 mkdir -p /data/{geo,logs,cache}
 mkdir -p /data/{geo,logs}
 mkdir -p /data/attachments/{media,avatar,cache/metadata_thumbnails}
