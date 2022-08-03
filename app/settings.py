@@ -244,9 +244,6 @@ NO_THUMBNAIL_IMAGE = os.path.join(
     BASE_DIR, 'backend', 'resources', 'images', 'no-thumb.png')
 NO_THUMBNAIL_URL = '/static/images/no-thumb.png'
 
-# GIS data dir
-GEO_DATA_DIR = "/geodata"
-
 # for swagger in production env
 USE_X_FORWARDED_HOST = False
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

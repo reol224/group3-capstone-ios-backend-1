@@ -6,7 +6,7 @@ on:
 
 env:
   # Define image names
-  BACKEND_IMAGE: ${{ github.repository }}
+  BACKEND_IMAGE: ghcr.io/freeyeti/group3-capstone-ios-backend
   REGISTRY: ghcr.io
 
 
