@@ -18,6 +18,7 @@ added_files = [
   (os.path.join(local_lib, 'dbutils'), 'dbutils'),
   (os.path.join(local_lib, 'requests'), 'requests'),
   (os.path.join(local_lib, 'drf_yasg'), 'drf_yasg'),
+  (os.path.join(local_lib, 'coreschema'), 'coreschema'),
 
   ('app', 'app'),
   ('backend', 'backend'),
