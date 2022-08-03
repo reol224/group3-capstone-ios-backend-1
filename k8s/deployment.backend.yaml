@@ -19,7 +19,7 @@ spec:
       containers:
         - name: ios-capstone-backend
           image: __IMAGE_BACKEND__:__IMAGE_TAG__
-          command: ["./app"]
+          command: ["/app/manage/docker-entrypoint.sh"]
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
