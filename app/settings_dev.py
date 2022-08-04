@@ -26,5 +26,3 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'referrer-policy',
     'type',
 ]
-
-GEO_DATA_DIR = os.path.join(DATA_DIR, "geo")

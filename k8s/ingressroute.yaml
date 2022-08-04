@@ -9,7 +9,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: (Host(`capstone.freeyeti.net`)
+      match: Host(`capstone.freeyeti.net`)
       priority: 9
       services:
         - name: ios-capstone-backend

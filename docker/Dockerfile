@@ -49,6 +49,7 @@ ENV DJANGO_LOG_FILE "/data/logs/debug.log"
 COPY --from=backend /$PROJECT_PATH/dist /app
 COPY --from=backend /$PROJECT_PATH/docker-entrypoint-migrate.sh /app/manage/docker-entrypoint-migrate.sh
 COPY --from=backend /$PROJECT_PATH/docker-entrypoint.sh /app/manage/docker-entrypoint.sh
+COPY --from=backend /$PROJECT_PATH/dist/manage/rest_framework/static /statics 
 RUN chmod +x /app/manage/docker-entrypoint.sh
 RUN chmod +x /app/manage/docker-entrypoint-migrate.sh
 

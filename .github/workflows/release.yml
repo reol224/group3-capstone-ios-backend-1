@@ -127,4 +127,5 @@ jobs:
             k8s/deployment.backend.yaml
             k8s/job.db-migrate.yaml
             k8s/job.test.backend.yaml
+            k8s/ingressroute.yaml
             k8s/service.backend.yaml
