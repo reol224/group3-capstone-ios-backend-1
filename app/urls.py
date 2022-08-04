@@ -47,6 +47,7 @@ urlpatterns = [
          name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schemaredoc'),
     path('api/account/', include('backend.account.urls')),
+    path('api/photos/', include('backend.photos.urls')),
 ]
 
 # Public statics by Django
