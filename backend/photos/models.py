@@ -1,3 +1,4 @@
+from django.contrib.gis.db import models as gisModels
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +10,7 @@ class Photos(models.Model):
     description = models.TextField(max_length=1000, blank=True, null=True)
     keywords = models.CharField(max_length=200, blank=True, null=True)
     url = models.CharField(max_length=300, blank=True, null=True)
+    position = gisModels.PointField(blank=True, null=True)
     ts_created = models.DateTimeField(auto_now_add=True)
     ts_changed = models.DateTimeField(auto_now=False, blank=True, null=True)
 

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from backend.photos.models import Photos
+from drf_extra_fields.geo_fields import PointField
 
 class PhotoSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -7,6 +8,7 @@ class PhotoSerializer(serializers.Serializer):
     description = serializers.CharField(required=False, allow_blank=True, max_length=100)
     keywords = serializers.CharField(required=False, allow_blank=True, max_length=100)
     url = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    position = PointField(required=False, allow_null=True)
 
     def create(self, validated_data):
         """
