@@ -8,6 +8,7 @@ class PhotoSerializer(serializers.Serializer):
     description = serializers.CharField(required=False, allow_blank=True, max_length=100)
     keywords = serializers.CharField(required=False, allow_blank=True, max_length=100)
     url = serializers.CharField(required=False, allow_blank=True, max_length=300)
+    thumb_url = serializers.CharField(required=False, allow_blank=True, max_length=300)
     position = PointField(required=False, allow_null=True)
 
     def create(self, validated_data):
@@ -24,5 +25,7 @@ class PhotoSerializer(serializers.Serializer):
         instance.description = validated_data.get('description', instance.description)
         instance.keywords = validated_data.get('keywords', instance.keywords)
         instance.url = validated_data.get('url', instance.url)
+        instance.thumb_url = validated_data.get('thumb_url', instance.thumb_url)
+        instance.position = validated_data.get('position', instance.position)
         instance.save()
         return instance
